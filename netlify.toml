@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build]
+  command = "npm run build"  # ou o comando que você usa para construir seu projeto
+  publish = "build"  # ou o diretório de construção específico para o Vite
+
