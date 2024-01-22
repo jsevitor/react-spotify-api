@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .menu a:hover {
+        @apply text-spotify transition-all duration-300;
+    }
+
+    .nomeArtista div:hover {
+        @apply text-spotify transition-all duration-300;
+    }
+
+    .nomeAlbum div:hover {
+        @apply text-spotify transition-all duration-300;
+    }
+
+    .submenu div:hover {
+        @apply text-spotify bg-lineGray transition-all duration-300;
+    }
+
+    .relacionado div:hover {
+        @apply text-spotify bg-gray transition-all duration-300 cursor-pointer;
+    }
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    /* font-family: "Poppins"; */
+    /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+}
