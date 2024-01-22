@@ -16,7 +16,6 @@ export default {
     extend: {
       fontFamily: {
         custom: ['Dosis', 'sans-serif'], 
-        helvetica: ['Helvetica', 'Arial', 'sans-serif'],
       },
     },
   },

@@ -8,7 +8,7 @@ export default function Menu() {
                 <a href="/">home</a>
                 <a href="/contato">contato</a>
             </div>
-            <div className="text-xl text-spotify font-light">
+            <div className="text-md text-spotify font-light uppercase">
                 spotify explorer
             </div>
         </div>

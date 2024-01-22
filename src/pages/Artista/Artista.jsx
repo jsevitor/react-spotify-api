@@ -116,7 +116,7 @@ export default function Artista() {
                         >
                             <div className="flex flex-col py-6 w-full">
                                 <div className="flex flex-row gap-8 items-center mb-2">
-                                    <span className="text-6xl font-semibold">{artistDetail.name}</span>
+                                    <span className="sm:text-4xl xl:text-6xl font-semibold">{artistDetail.name}</span>
                                     <span className="flex justify-center items-center bg-spotify w-12 h-12 text-3xl rounded-md p-1">{artistDetail.popularity}</span>
                                 </div>
                                 <span className="text-sm mb-4 text-gray">{(artistDetail.followers.total).toLocaleString()} ouvintes</span>

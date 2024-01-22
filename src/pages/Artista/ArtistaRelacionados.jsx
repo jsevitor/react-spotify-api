@@ -73,13 +73,13 @@ export default function ArtistaRelacionados() {
                                 <div className="flex items-center ">
                                     {relatedArtist.images.length > 0 && (
                                         <img
-                                            src={relatedArtist.images[0].url} // Use a primeira imagem do array, ajuste conforme necessário
+                                            src={relatedArtist.images[0].url}
                                             alt={relatedArtist.name}
                                             className="w-10 h-10 rounded-md object-cover"
                                         />
                                     )}
                                 </div>
-                                <span className="text-white">{relatedArtist.name}</span>
+                                <span>{relatedArtist.name}</span>
                             </a>
                         </div>
                     ))}

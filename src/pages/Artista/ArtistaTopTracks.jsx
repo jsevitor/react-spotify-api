@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Clock, Play } from 'react-feather';
 
 export default function ArtistaTopTracks() {
     const params = useParams();
@@ -79,13 +80,22 @@ export default function ArtistaTopTracks() {
             {artistTopTacks.tracks && artistTopTacks.tracks.length > 0 && (
                 <div className="mx-6  bg-opGray rounded-2xl">
 
+                    <div className="grid grid-cols-12 text-gray font-bold pb-2">
+                        <div className="flex justify-center">#</div>
+                        <div></div>
+                        <div className="flex items-center col-span-3">Título</div>
+                        <div className="col-span-3">Album</div>
+                        <div className="flex items-center pl-3"><Clock /></div>
+                        <div className=""><Play /></div>
+                    </div>
+
                     {artistTopTacks.tracks.map((track, index) => (
                         <div key={index} className="py-2 grid grid-cols-12 font-light">
                             <div className="flex items-center justify-center">{index + 1}</div>
                             <div className="flex items-center justify-center">
                                 {track.album && track.album.images && track.album.images.length > 0 && (
                                     <img
-                                        src={track.album.images[0].url} 
+                                        src={track.album.images[0].url}
                                         alt={`Capa do álbum - ${track.name}`}
                                         className="w-10 h-full rounded-md object-cover"
                                     />
@@ -105,7 +115,7 @@ export default function ArtistaTopTracks() {
                                         Seu navegador não suporta o elemento de áudio.
                                     </audio>
                                 )}
-                            </div>                            
+                            </div>
                         </div>
                     ))}
                 </div>
