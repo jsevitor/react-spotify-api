@@ -79,6 +79,7 @@ export default function Home() {
             setArtists(data.artists.items);
             setNextPage(data.artists.next);
             setPrevPage(data.artists.previous);
+            console.log(prevPage);
 
             console.log(data);
         } catch (error) {
@@ -96,7 +97,7 @@ export default function Home() {
         setArtist("");
         setTimeout(() => {
             setShowResults(true);
-        }, 600);
+        }, 700);
     };
 
     const handleNextClick = () => {
@@ -108,6 +109,7 @@ export default function Home() {
             setTimeout(() => {
                 setShowResults(true);
             }, 300);
+            console.log(currentPage);
         }
     };
 
@@ -121,6 +123,7 @@ export default function Home() {
             setTimeout(() => {
                 setShowResults(true);
             }, 300);
+            console.log(currentPage);
         }
     };
 
@@ -165,7 +168,8 @@ export default function Home() {
 
             {/* EXIBE RESULTADO DA BUSCA */}
             {showResults && (
-                <div className="nomeArtista flex flex-wrap justify-center bg-opGray rounded-2xl mb-6 mx-44 box-border p-4 gap-4">
+                // <div className="nomeArtista flex flex-wrap justify-center bg-opGray rounded-2xl mb-6 mx-44 box-border p-4 gap-4"> /*}
+                <div className="nomeArtista mx-auto grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 bg-opGray rounded-2xl mb-6 p-4">
                     {artists.map(item => (
                         <div key={item.id} className="text-center bg-lineGray rounded-lg pb-2 w-48 flex-shrink-0">
                             <a href={'/artista/' + item.id} className="block">
@@ -176,7 +180,13 @@ export default function Home() {
                                         className="w-full h-48 object-cover mx-auto mb-2 rounded-t-lg"
                                     />
                                 ) : (
-                                    <div className="w-full h-48 bg-gray rounded-t-lg mx-auto mb-2 rounded-lg"></div>
+                                    <img
+                                        src="https://sun9-6.userapi.com/impg/RaXltn7bx5SPpoKyGdWyEpbbG5Qor3ve6SZDEw/ePQ2yrtXFe8.jpg?size=600x600&quality=96&proxy=1&sign=a23fc60917c9c040d4e8f6e4af659edf&type=album"
+                                        alt={item.name}
+                                        className="w-full h-48 object-cover mx-auto mb-2 rounded-t-lg"
+                                    />
+
+
                                 )}
                                 <span className="text-base">{item.name}</span>
                             </a>
@@ -188,13 +198,13 @@ export default function Home() {
             {/* Botões Next e Previous */}
             {showResults && (
                 <div className="maisArtistas flex justify-center mx-44 box-border mt-4 items-center">
-                    <button onClick={handlePrevClick} disabled={!prevPage} className="border border-lineGray rounded-full px-2 py-2 bg-gray-800 hover:bg-spotify flex flex-row justify-center gap-2" style={{ opacity: prevPage ? 1 : 0.5 }}>
+                    <button onClick={handlePrevClick} disabled={!prevPage} className="bg-opGray  rounded-full w-32 px-2 py-2 bg-gray-800 hover:bg-spotify flex flex-row gap-2" style={{ opacity: prevPage ? 1 : 0.5 }}>
                         <ChevronLeft />
-                        Previous
+                        <span className="">Previous</span>
                     </button>
-                    <span className="border border-lineGray w-10 h-10 mx-10 flex justify-center items-center rounded-lg bg-lineGray text-lg">{currentPage}</span>
-                    <button onClick={handleNextClick} disabled={!nextPage} className="border border-lineGray rounded-full w-24 py-2 bg-gray-800 hover:bg-spotify flex flex-row justify-center gap-2" style={{ opacity: nextPage ? 1 : 0.5 }}>
-                        Next
+                    <span className="w-10 h-10 mx-10 flex justify-center items-center rounded-lg bg-opGray text-lg">{currentPage}</span>
+                    <button onClick={handleNextClick} disabled={!nextPage} className="bg-opGray rounded-full w-32 pr-2 pl-6 py-2 bg-gray-800 hover:bg-spotify flex flex-row justify-between gap-2" style={{ opacity: nextPage ? 1 : 0.5 }}>
+                        <span className="">Next</span>
                         <ChevronRight />
                     </button>
                 </div>
