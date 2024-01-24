@@ -93,8 +93,7 @@ export default function Home() {
     const handleSearchClick = () => {
         setShowResults(false);
         fetchData(`https://api.spotify.com/v1/search?q=${encodeURIComponent(`artist:${artist}`)}&type=artist`);
-        // setArtist("");
-        setCurrentPage((prevPage) => prevPage + 1);
+        setArtist("");
         setTimeout(() => {
             setShowResults(true);
         }, 700);
@@ -104,7 +103,7 @@ export default function Home() {
         if (nextPage) {
             setShowResults(false);
             setLoading(true);
-            setCurrentPage(prevPage + 1);
+            setCurrentPage((prevPage) => prevPage + 1);
             fetchData(nextPage);
             setTimeout(() => {
                 setShowResults(true);
