@@ -79,6 +79,7 @@ export default function Home() {
             setArtists(data.artists.items);
             setNextPage(data.artists.next);
             setPrevPage(data.artists.previous);
+            console.log(prevPage);
 
             console.log(data);
         } catch (error) {
@@ -108,6 +109,7 @@ export default function Home() {
             setTimeout(() => {
                 setShowResults(true);
             }, 300);
+            console.log(currentPage);
         }
     };
 
@@ -117,10 +119,11 @@ export default function Home() {
             setShowResults(false);
             setLoading(true);
             setCurrentPage((prevPage) => prevPage - 1);
-            fetchData(prevPage);
+            fetchData(nextPage);
             setTimeout(() => {
                 setShowResults(true);
             }, 300);
+            console.log(currentPage);
         }
     };
 
