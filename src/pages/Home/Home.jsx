@@ -92,6 +92,8 @@ export default function Home() {
     };
 
     const handleSearchClick = () => {
+        setCurrentPage(1);
+        console.log("Passei aqui...")
         setShowResults(false);
         fetchData(`https://api.spotify.com/v1/search?q=${encodeURIComponent(`artist:${artist}`)}&type=artist`);
         setArtist("");
@@ -109,7 +111,6 @@ export default function Home() {
             setTimeout(() => {
                 setShowResults(true);
             }, 300);
-            console.log(currentPage);
         }
     };
 
@@ -119,11 +120,10 @@ export default function Home() {
             setShowResults(false);
             setLoading(true);
             setCurrentPage((prevPage) => prevPage - 1);
-            fetchData(nextPage);
+            fetchData(prevPage);
             setTimeout(() => {
                 setShowResults(true);
             }, 300);
-            console.log(currentPage);
         }
     };
 
