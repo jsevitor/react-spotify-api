@@ -79,7 +79,6 @@ export default function Home() {
             setArtists(data.artists.items);
             setNextPage(data.artists.next);
             setPrevPage(data.artists.previous);
-            console.log(prevPage);
 
             console.log(data);
         } catch (error) {
@@ -94,7 +93,8 @@ export default function Home() {
     const handleSearchClick = () => {
         setShowResults(false);
         fetchData(`https://api.spotify.com/v1/search?q=${encodeURIComponent(`artist:${artist}`)}&type=artist`);
-        setArtist("");
+        // setArtist("");
+        setCurrentPage((prevPage) => prevPage + 1);
         setTimeout(() => {
             setShowResults(true);
         }, 700);
@@ -104,12 +104,11 @@ export default function Home() {
         if (nextPage) {
             setShowResults(false);
             setLoading(true);
-            setCurrentPage((prevPage) => prevPage + 1);
+            setCurrentPage(prevPage + 1);
             fetchData(nextPage);
             setTimeout(() => {
                 setShowResults(true);
             }, 300);
-            console.log(currentPage);
         }
     };
 
@@ -119,11 +118,10 @@ export default function Home() {
             setShowResults(false);
             setLoading(true);
             setCurrentPage((prevPage) => prevPage - 1);
-            fetchData(nextPage);
+            fetchData(prevPage);
             setTimeout(() => {
                 setShowResults(true);
             }, 300);
-            console.log(currentPage);
         }
     };
 
