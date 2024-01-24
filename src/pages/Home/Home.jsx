@@ -94,7 +94,6 @@ export default function Home() {
 
     const handleSearchClick = () => {
         setCurrentPage(1);
-        console.log("Passei aqui...")
         setShowResults(false);
         fetchData(`https://api.spotify.com/v1/search?q=${encodeURIComponent(`artist:${artist}`)}&type=artist`);
         setArtist("");
@@ -131,14 +130,14 @@ export default function Home() {
     return (
         <div className="flex flex-col min-h-screen bg-black text-slate-50 text-white">
             <Menu />
-            <div className="container mx-auto flex-grow">
+            <div className="container mx-auto flex-grow px-6">
                 <div className="ml6 flex justify-center">
                     <span className="text-wrapper">
-                        <span className="letters pt-20">SPOTIFY EXPLORER</span>
+                        <span className="letters pt-20 text-xl md:text-4xl xl:text-5xl">SPOTIFY EXPLORER</span>
                     </span>
                 </div>
                 <div className="flex justify-center">
-                    <span className="subTituloHome pb-6">Explore o universo musical e busque por seus artistas favoritos</span>
+                    <span className="pb-6 text-xs md:text-base xl:text-lg text-center">Explore o universo musical e busque por seus artistas favoritos</span>
                 </div>
                 <div className="flex flex-row justify-center py-6 mb-16">
                     <input
@@ -147,7 +146,7 @@ export default function Home() {
                         id="searchArtist"
                         value={artist}
                         onChange={(event) => setArtist(event.target.value)}
-                        className="p-3 rounded-s-full w-96 text-black pl-6"
+                        className="p-3 rounded-s-full w-96 bg-white text-black pl-6"
                     />
                     <button
                         className="rounded-e-full py-3 px-5 bg-spotify"
@@ -158,34 +157,26 @@ export default function Home() {
                 </div>
 
                 {/* CARREGAMENTO */}
-                {/* <div className="spinner" style={{ display: loading ? "block" : "none" }}>
-                    <div className="rect1"></div>
-                    <div className="rect2"></div>
-                    <div className="rect3"></div>
-                    <div className="rect4"></div>
-                    <div className="rect5"></div>
-                </div> */}
                 <Animation loading={loading} setLoading={setLoading} />
             </div>
 
             {/* EXIBE RESULTADO DA BUSCA */}
             {showResults && (
-                // <div className="nomeArtista flex flex-wrap justify-center bg-opGray rounded-2xl mb-6 mx-44 box-border p-4 gap-4"> /*}
-                <div className="nomeArtista mx-auto grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 bg-opGray rounded-2xl mb-6 p-4">
+                <div className="nomeArtista mx-auto grid gap-4 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 bg-opGray rounded-2xl mb-6 p-4">
                     {artists.map(item => (
-                        <div key={item.id} className="text-center bg-lineGray rounded-lg pb-2 w-48 flex-shrink-0">
+                        <div key={item.id} className="text-center bg-lineGray rounded-lg pb-2 w-36 md:w-48 flex-shrink-0">
                             <a href={'/artista/' + item.id} className="block">
                                 {item.images.length > 0 ? (
                                     <img
                                         src={item.images[0].url}
                                         alt={item.name}
-                                        className="w-full h-48 object-cover mx-auto mb-2 rounded-t-lg"
+                                        className="w-full h-36 md:h-48 object-cover mx-auto mb-2 rounded-t-lg"
                                     />
                                 ) : (
                                     <img
                                         src="https://sun9-6.userapi.com/impg/RaXltn7bx5SPpoKyGdWyEpbbG5Qor3ve6SZDEw/ePQ2yrtXFe8.jpg?size=600x600&quality=96&proxy=1&sign=a23fc60917c9c040d4e8f6e4af659edf&type=album"
                                         alt={item.name}
-                                        className="w-full h-48 object-cover mx-auto mb-2 rounded-t-lg"
+                                        className="w-full h-36 md:h-48 object-cover mx-auto mb-2 rounded-t-lg"
                                     />
 
 
@@ -199,14 +190,12 @@ export default function Home() {
 
             {/* Botões Next e Previous */}
             {showResults && (
-                <div className="maisArtistas flex justify-center mx-44 box-border mt-4 items-center">
-                    <button onClick={handlePrevClick} disabled={!prevPage} className="bg-opGray  rounded-full w-32 px-2 py-2 bg-gray-800 hover:bg-spotify flex flex-row gap-2" style={{ opacity: prevPage ? 1 : 0.5 }}>
+                <div className="maisArtistas flex justify-center  box-border mt-4 items-center">
+                    <button onClick={handlePrevClick} disabled={!prevPage} className="bg-opGray  rounded-full px-6 py-2 bg-gray-800 hover:bg-spotify" style={{ opacity: prevPage ? 1 : 0.5 }}>
                         <ChevronLeft />
-                        <span className="">Previous</span>
                     </button>
                     <span className="w-10 h-10 mx-10 flex justify-center items-center rounded-lg bg-opGray text-lg">{currentPage}</span>
-                    <button onClick={handleNextClick} disabled={!nextPage} className="bg-opGray rounded-full w-32 pr-2 pl-6 py-2 bg-gray-800 hover:bg-spotify flex flex-row justify-between gap-2" style={{ opacity: nextPage ? 1 : 0.5 }}>
-                        <span className="">Next</span>
+                    <button onClick={handleNextClick} disabled={!nextPage} className="bg-opGray rounded-full px-6 py-2 bg-gray-800 hover:bg-spotify" style={{ opacity: nextPage ? 1 : 0.5 }}>
                         <ChevronRight />
                     </button>
                 </div>
