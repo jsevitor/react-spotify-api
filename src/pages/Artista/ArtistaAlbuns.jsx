@@ -76,7 +76,7 @@ export default function ArtistaAlbuns() {
 
         <div className="Album p-4 bg-opGray rounded-2xl">
             {Object.keys(artistAlbums).length > 0 && (
-                <div className="nomeAlbum flex flex-wrap bg-opGray rounded-2xl box-border gap-4">
+                <div className="nomeAlbum grid grid-cols-6 bg-opGray rounded-2xl box-border gap-4 pl-1">
                     {artistAlbums.items
                         .filter(album => album.album_group === 'album')
                         .map((album, index) => (
@@ -89,17 +89,17 @@ export default function ArtistaAlbuns() {
                                             className="object-cover w-full h-48 mb-2"
                                         />
                                     )}
-                                    <div className="flex flex-col px-2">
+                                    <section className="flex flex-col px-3">
                                         <span className="font-medium text-sm overflow-hidden whitespace-nowrap overflow-ellipsis">
                                             {album.name}
                                         </span>
                                         {album.total_tracks && (
-                                            <div className="text-xs mt-1  text-gray flex justify-between"> 
+                                            <span className="text-xs mt-1  text-gray flex justify-between"> 
                                                 <span>{album.total_tracks} faixas</span>
                                                 <span>{getYear(album.release_date)}</span>           
-                                            </div>
+                                            </span>
                                         )}
-                                    </div>
+                                    </section>
                                 </div>
                             </a>
                         ))}

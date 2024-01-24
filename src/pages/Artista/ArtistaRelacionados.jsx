@@ -66,20 +66,20 @@ export default function ArtistaRelacionados() {
     return (
         <div className="ArtistaRelacionados p-4 bg-opGray rounded-2xl">
             {Object.keys(artistRelated).length > 0 && (
-                <div className="relacionado flex flex-wrap bg-opGray rounded-2xl box-border gap-4">
+                <div className="relacionado mx-auto grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 bg-opGray rounded-2xl box-border">
                     {artistRelated.artists.map((relatedArtist, index) => (
-                        <div key={index} className="flex flex-row w-48 p-2 bg-lineGray rounded-md">
-                            <a href={'/artista/' + relatedArtist.id} className="flex flex-row items-center gap-2 w-full">
+                        <div key={index} className="flex flex-row  p-2 bg-lineGray rounded-md">
+                            <a href={'/artista/' + relatedArtist.id} className="grid grid-cols-3 items-center gap-2 w-full">
                                 <div className="flex items-center ">
                                     {relatedArtist.images.length > 0 && (
                                         <img
                                             src={relatedArtist.images[0].url}
                                             alt={relatedArtist.name}
-                                            className="w-10 h-10 rounded-md object-cover"
+                                            className="w-14 h-14 rounded-md object-cover"
                                         />
                                     )}
                                 </div>
-                                <span>{relatedArtist.name}</span>
+                                <span className="col-span-2">{relatedArtist.name}</span>
                             </a>
                         </div>
                     ))}
