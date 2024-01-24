@@ -3,6 +3,7 @@ import { Search, ChevronRight, ChevronLeft } from 'react-feather';
 import anime from 'animejs';
 import Menu from "../../components/Menu";
 import Footer from "../../components/Footer";
+import Animation from "../../components/Animation";
 export default function Home() {
     const CLIENT_ID = "c59afece5f844090b1a30cc9f2d44bf2";
     const CLIENT_SECRET = "a1ca663f36d84a33a2fc243e55152b7c";
@@ -157,13 +158,14 @@ export default function Home() {
                 </div>
 
                 {/* CARREGAMENTO */}
-                <div className="spinner" style={{ display: loading ? "block" : "none" }}>
+                {/* <div className="spinner" style={{ display: loading ? "block" : "none" }}>
                     <div className="rect1"></div>
                     <div className="rect2"></div>
                     <div className="rect3"></div>
                     <div className="rect4"></div>
                     <div className="rect5"></div>
-                </div>
+                </div> */}
+                <Animation loading={loading} setLoading={setLoading} />
             </div>
 
             {/* EXIBE RESULTADO DA BUSCA */}
