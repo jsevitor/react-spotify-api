@@ -98,23 +98,20 @@ export default function Artista() {
                 {Object.keys(artistDetail).length > 0 && (
                     <div
                         key={artistDetail.id}
-                        className="flex flex-row"
+                        className="flex flex-col sm:flex-row"
                     >
-                        <div className="mr-4">
+                        <div className="flex justify-center w-screen sm:w-96 sm:mr-4 sm:justify-start">
                             {artistDetail.images.length >= 2 && (
                                 <img
                                     src={artistDetail.images[1].url}
                                     alt={artistDetail.name}
-                                    className="object-cover rounded-xl"
+                                    className="object-cover w-full sm:w-72 sm:rounded-xl"
                                 />
                             )}
                         </div>
 
-                        <div
-                            className="grid grid-flow-col-dense w-full bg-opGray px-8 rounded-xl"
-                            style={{}}
-                        >
-                            <div className="flex flex-col py-6 w-full">
+                        <div className="grid grid-flow-col-dense w-full bg-opGray px-8 rounded-xl">
+                            <div className="flex flex-col py-6 w-full border border-white">
                                 <div className="flex flex-row gap-8 items-center mb-2">
                                     <span className="sm:text-4xl xl:text-6xl font-semibold">{artistDetail.name}</span>
                                     <span className="flex justify-center items-center bg-spotify w-12 h-12 text-3xl rounded-md p-1">{artistDetail.popularity}</span>
