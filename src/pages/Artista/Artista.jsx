@@ -105,7 +105,7 @@ export default function Artista() {
                                 <img
                                     src={artistDetail.images[1].url}
                                     alt={artistDetail.name}
-                                    className="object-cover rounded-xl"
+                                    className="object-cover rounded-xl max-h-80"
                                 />
                             )}
                         </div>
